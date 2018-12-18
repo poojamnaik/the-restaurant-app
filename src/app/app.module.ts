@@ -4,40 +4,46 @@ import { FormsModule } from '@angular/forms'; // NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RestaurantCoreModule } from './restaurant-core/restaurant-core.module'
+
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
+
 const appRoutes: Routes = [
-  {
-  path: 'app',
-  children: [
-  {
-    path: 'books',
-    component: BookComponent,
-    data: { title: 'Book List' }
-  },
-  {
-    path: 'book-details/:id',
-    component: BookDetailComponent,
-    data: { title: 'Book Details' }
-  },
-  {
-    path: 'book-create',
-    component: BookCreateComponent,
-    data: { title: 'Create Book' }
-  },
-  {
-    path: 'book-edit/:id',
-    component: BookEditComponent,
-    data: { title: 'Edit Book' }
-  },
-  { path: '',
-    redirectTo: 'books',
-    pathMatch: 'full'
-  }]
-}
+  { path: '',   redirectTo: '/app/restaurants', pathMatch: 'full' },
+  { path: 'app',   redirectTo: '/app/restaurants', pathMatch: 'full' }
+  // { path: '**', component: PageNotFoundComponent }
+//   {
+//   path: 'app',
+//   children: [
+//   {
+//     path: 'books',
+//     component: BookComponent,
+//     data: { title: 'Book List' }
+//   },
+//   {
+//     path: 'book-details/:id',
+//     component: BookDetailComponent,
+//     data: { title: 'Book Details' }
+//   },
+//   {
+//     path: 'book-create',
+//     component: BookCreateComponent,
+//     data: { title: 'Create Book' }
+//   },
+//   {
+//     path: 'book-edit/:id',
+//     component: BookEditComponent,
+//     data: { title: 'Edit Book' }
+//   },
+//   { path: '',
+//     redirectTo: 'restaurants',
+//     pathMatch: 'full'
+//   }]
+// }
 ];
 
 @NgModule({
@@ -52,10 +58,12 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RestaurantCoreModule, // add the feature module here
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } 
-    )
+    ),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var book = require('./routes/book');
+var restaurant = require('./routes/restaurant');
+
 var app = express();
 
 // MongoDB object modeling tool designed to work in an asynchronous 
@@ -21,16 +23,17 @@ mongoose.connect('mongodb://localhost/the-restaurant-app', { promiseLibrary: req
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
-// Exposed to outer world
+// Exposed to outer world, Check angular.json outDir for path
 app.use(express.static(path.join(__dirname, 'dist/the-restaurant-app')));
 
-// // Register all the FE urls here
-// app.use('/books', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
-// app.use('/book-details/:id', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+/**
+ * // Register all the FE urls here
+ app.use('/books', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+ app.use('/book-details/:id', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+ */
 
 // Redirect all the FE urls which starts with /app to index/html
 app.all('/app/*', function (req, res) {
@@ -39,9 +42,10 @@ app.all('/app/*', function (req, res) {
 });
 
 app.use('/book', book);
-app.use('', book); //add this line too
+app.use('/restaurant', restaurant);
 
-// app.set('view engine', 'html');
+app.use('', restaurant); //add this line too ????
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -69,8 +73,6 @@ if(!err.status){
     });
 }
 
-  // res.render('error');
-//   res.render('error',  { error: err });
 });
 
 module.exports = app;
