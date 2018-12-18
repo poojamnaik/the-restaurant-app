@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 
-mongoose.connect('mongodb://localhost/mean-angular5', { promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://localhost/the-restaurant-app', { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -25,15 +25,23 @@ mongoose.connect('mongodb://localhost/mean-angular5', { promiseLibrary: require(
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
-app.use(express.static(path.join(__dirname, 'dist')));
-console.log();
-app.use('/books', express.static(path.join(__dirname, 'dist')));
+// Exposed to outer world
+app.use(express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+
+// // Register all the FE urls here
+// app.use('/books', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+// app.use('/book-details/:id', express.static(path.join(__dirname, 'dist/the-restaurant-app')));
+
+// Redirect all the FE urls which starts with /app to index/html
+app.all('/app/*', function (req, res) {
+  // app.use(express.static(path.join(req.url, 'dist/the-restaurant-app')));
+    res.sendFile(path.join(__dirname, 'dist/the-restaurant-app/index.html'));
+});
+
 app.use('/book', book);
 app.use('', book); //add this line too
 
-// Redirects to  a route file when this url is hit
-app.use('/book', book);
-
+// app.set('view engine', 'html');
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -52,7 +60,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-//   res.status(err.status || 500);
+  res.status(err.status || 500);
 if(!err.status){
     res.status( 500);
     res.json({
@@ -61,7 +69,7 @@ if(!err.status){
     });
 }
 
-//   res.render('error');
+  // res.render('error');
 //   res.render('error',  { error: err });
 });
 
