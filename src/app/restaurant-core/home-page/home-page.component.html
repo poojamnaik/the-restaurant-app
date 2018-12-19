@@ -1,3 +1,77 @@
-<p>
-  home-page works!
-</p>
+<div class="container">
+  <div class="row">
+   
+ 
+<!--
+<nav class="navbar navbar-expand-lg custom-title-navbar row">
+  <a class="navbar-brand col-sm-4" href="#">The Restaurant App</a>
+  <div class=" col-sm-4" href="#"></div>
+  <div class="collapse navbar-collapse  col-sm-4" id="navbarSupportedContent">
+    <div class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Hi Pooja
+      </a>
+      <div class="dropdown-menu  " aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Preferences</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Log Out</a>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg custom-title-navbar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item  custom-nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item custom-nav-item ">
+        <a class="nav-link" href="#">Order </a>
+      </li>
+      <li class="nav-item custom-nav-item">
+        <a class="nav-link " href="#">Reservation </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+-->
+
+</div>
+<div class="rest-list-container" >
+    <div class="row">
+
+        <div *ngFor="let a of restaurantList " class="col-sm-12">
+        
+          <div class="card">
+              <div class="card-header example-card-header">
+               {{a.name}}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text"><img class="img-float" src="{{a.thumb}}" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
+                  With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+      </div>
+
+</div>
+
+
+</div>

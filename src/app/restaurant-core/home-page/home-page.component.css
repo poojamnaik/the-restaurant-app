@@ -1,0 +1,33 @@
+/**
+Card style
+*/
+.example-card-header {
+    color:#cb202d;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .img-float{
+    float:right
+  }
+
+  .rest-list-container{
+   width: 70%;
+   margin: auto;
+
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: .75rem;
+    line-height: 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #89959B;
+}

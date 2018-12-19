@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 const appRoutes: Routes = [
   {
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
   declarations: [HomePageComponent],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     RouterModule.forChild(appRoutes)
   ]
 })

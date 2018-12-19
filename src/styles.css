@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+a.navbar-brand{
+color: white;
+    font-size: 3.25rem;
+}
+
+.custom-title-navbar{
+    background-color:#cb202d;
+}
+
+.custom-nav-item>a{
+    font-size: 2rem;
+    
+    color:white
+
+}
+.custom-nav-item.active >a{
+    border:white;
+    border-radius: 2px;
+}
+
