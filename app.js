@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 
 var book = require('./routes/book');
 var restaurant = require('./routes/restaurant');
-
+var user = require('./routes/user');
 var app = express();
 
 // MongoDB object modeling tool designed to work in an asynchronous 
@@ -43,6 +43,7 @@ app.all('/app/*', function (req, res) {
 
 app.use('/book', book);
 app.use('/restaurant', restaurant);
+app.use('/users',user);
 
 app.use('', restaurant); //add this line too ????
 

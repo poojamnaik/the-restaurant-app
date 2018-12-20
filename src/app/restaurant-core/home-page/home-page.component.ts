@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { first } from 'rxjs/operators';
+
+
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,11 +13,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
-
+  constructor(private http:HttpClient, private userService: UserService) { }
+  users: User[] = [];
   restaurantList:any[] = new Array()  ;
 
   ngOnInit() {
+
+    this.userService.getAll().pipe(first()).subscribe(users => {
+      this.users = users;
+  });
+
     this.restaurantList=[
       {
           "location": {
