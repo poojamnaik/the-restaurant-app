@@ -1,0 +1,19 @@
+
+.detail-title
+{    font-size: 1.3rem;
+}
+
+.img-float{
+    float: right;
+    width: 201px;
+    height: 99px;
+    margin-left: 15px;
+    border: white;
+    border-radius: 8px;
+  }
+
+  .card-header-title{
+    color:#cb202d;
+    font-size: 2rem;
+    font-weight: 700;
+  }

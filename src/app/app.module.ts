@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms'; // NgModel lives here
 import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { RestaurantCoreModule } from './restaurant-core/restaurant-core.module'
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RestaurantCoreModule } from './restaurant-core/restaurant-core.module';
+import { MyOwnCustomMaterialModule } from './custom-material.module';
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
@@ -17,6 +17,8 @@ import { AuthGuard } from './guards/auth.guard';
 
 import {  ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { RegistrationComponent } from './registration/registration.component';
+import { AdminComponent } from './admin/admin.component';
 
 // used to create fake backend
 // import { fakeBackendProvider } from './fake-backend/fake-backend';
@@ -24,7 +26,9 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 const appRoutes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full',  canActivate: [AuthGuard] },
   { path: 'app',   redirectTo: '/app/restaurants', pathMatch: 'full' },
-  { path: 'login',   component: LoginComponent , data: { title: 'Login' }}
+  { path: 'login',   component: LoginComponent , data: { title: 'Login' }},
+  { path: 'register',   component: RegistrationComponent , data: { title: 'Register' }},
+  { path: 'admin',   component: AdminComponent , data: { title: 'Admin' }}
   // { path: '**', component: PageNotFoundComponent }
 //   {
 //   path: 'app',
@@ -63,7 +67,9 @@ const appRoutes: Routes = [
     BookDetailComponent,
     BookCreateComponent,
     BookEditComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent,
+    AdminComponent
 
   ],
   imports: [
@@ -71,11 +77,13 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RestaurantCoreModule, // add the feature module here
+    RestaurantCoreModule,
+    BrowserAnimationsModule, // add the feature module here
+    MyOwnCustomMaterialModule,
+    MyOwnCustomMaterialModule,
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } 
-    ),
+      appRoutes
+    )
     
   ],
   providers: [

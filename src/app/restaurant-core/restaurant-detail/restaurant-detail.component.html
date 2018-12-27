@@ -1,0 +1,49 @@
+<div class="container">
+  <div Style="    width: 90%;">
+    <!--card begin-->
+    <div class="card">
+
+
+      <!--card header begin-->
+      <div class="card-header">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="card-header-title">{{restaurant.name}}</div>
+          </div>
+          <div class="col-sm-4">
+            <img class="img-float" src="{{restaurant.thumb}}" alt="Pineapple">
+          </div>
+        </div>
+      </div>
+      <!--card header end-->
+
+      <!--card body begin-->
+      <div class="card-body">
+        <dl class="list">
+          <dt class="col-sm-2 detail-title">Url</dt>
+          <dd class="col-sm-10">{{ restaurant.url }}</dd>
+          <dt class="col-sm-2  detail-title">Cost for Two</dt>
+          <dd class="col-sm-10">{{ restaurant.average_cost_for_two }}</dd>
+          <dt class="col-sm-2 detail-title">Thumbnail</dt>
+          <dd class="col-sm-10">{{ restaurant.thumb }} </dd>
+
+          <dt class="col-sm-2 detail-title">Price</dt>
+          <dd class="col-sm-10">{{ restaurant.price_range }}</dd>
+          <dt class="col-sm-2 detail-title">Cuisines</dt>
+          <dd class="col-sm-10">{{ restaurant.cuisines }}</dd>
+        </dl>
+
+      </div>
+      <!--card body end-->
+      <div class="dropdown-divider"></div>
+      
+      <div style="margin: 0 auto;padding: 2%;">
+        <a [routerLink]="['/app/restaurant-edit', restaurant._id]" class="btn btn-success">EDIT</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" type="button" (click)="deleteBook(restaurant._id)">DELETE</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a routerLink="/app/restaurants" class="btn btn-secondary">BACK</a>
+      </div>
+
+    </div>
+    <!--card begin-->
+  </div>
+</div>

@@ -19,9 +19,11 @@ export class AppComponent {
       private authenticationService: AuthenticationService
   ) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      console.log('curresnt user'+JSON.stringify(this.currentUser));
   }
 
   logout() {
+      console.log('Inside logout methid');
       this.authenticationService.logout();
       this.router.navigate(['/login']);
   }

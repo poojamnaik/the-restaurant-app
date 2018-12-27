@@ -1,86 +1,56 @@
 <div class="container">
-  <div class="row">
-   
-      <h1>Home</h1>
-      <p>You're logged in with Angular 7 & JWT!!</p>
-      <div>
-          Users from secure api end point:
-          <ul>
-              <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
-          </ul>
-      </div>
-      
- 
-<!--
-<nav class="navbar navbar-expand-lg custom-title-navbar row">
-  <a class="navbar-brand col-sm-4" href="#">The Restaurant App</a>
-  <div class=" col-sm-4" href="#"></div>
-  <div class="collapse navbar-collapse  col-sm-4" id="navbarSupportedContent">
-    <div class="nav-item dropdown ">
-      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Hi Pooja
-      </a>
-      <div class="dropdown-menu  " aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Preferences</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Log Out</a>
-      </div>
-      <div>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<nav class="navbar navbar-expand-lg custom-title-navbar">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item  custom-nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item custom-nav-item ">
-        <a class="nav-link" href="#">Order </a>
-      </li>
-      <li class="nav-item custom-nav-item">
-        <a class="nav-link " href="#">Reservation </a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
--->
-
-</div>
-<div class="rest-list-container" >
+  <div class="rest-list-container">
     <div class="row">
+      
+      <div class="col-sm-12 ">
+        <app-create-restaurant (restaurantAdded)='addNewRestaurant($event)'></app-create-restaurant>
+      </div>
 
-        <div *ngFor="let a of restaurantList " class="col-sm-12">
-        
+      <div class="row" *ngIf="restaurantList && restaurantList.length>0">
+        <div *ngFor="let a of restaurantList" class="col-sm-12">
           <div class="card">
-              <div class="card-header example-card-header">
-               {{a.name}}
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text"><img class="img-float" src="{{a.thumb}}" alt="Pineapple" style="width:170px;height:170px;margin-left:15px;">
-                  With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            
+            <div class="card-header">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="card-header-title">{{a.name}}</div>
+                  <div class="card-header-city">{{a.location?.city}}</div>
+                  <div class="card-header-address">{{a.location?.address}}</div>
+                </div>
+                <div class="col-sm-4">
+                  <img class="img-float" src="{{a.thumb}}" alt="Pineapple">
+                </div>
               </div>
             </div>
+
+            <div class="card-body">
+              <div class="row card-body-detail">
+                <div class="card-title col-sm-3">CUISINES: </div>
+                <div class="col-sm-8">{{a.cuisines}}</div>
+                <div class="card-title col-sm-3">COST FOR TWO: </div>
+                <div class="col-sm-8">{{a.average_cost_for_two}}</div>
+                <div class="card-title col-sm-3">HOURS: </div>
+                <div class="col-sm-8">12noon – 11pm (Mon-Sun)</div>
+              </div>
+            </div>
+
+            <div class="dropdown-divider"></div>
+
+            <div class="btn-group row" role="group" aria-label="Basic example" Style="margin:0">
+              <button type="button" class="btn btn-light col-sm-4 button-options">Call&nbsp;<i class="fa fa-phone" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-light col-sm-4 button-options" [routerLink]="['/app/restaurant-details', a._id]" >View Details</button>
+              <button type="button" class="btn btn-success col-sm-4 button-options" Style="color:white">Order&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+            </div>
+
+            <!-- <app-edit-restaurant></app-edit-restaurant> -->
           </div>
+        </div>
       </div>
 
-</div>
+      <div class="row empty" *ngIf="!restaurantList || restaurantList.length== 0">
+        OOPS!! Its Empty in here.
+      </div>
 
-
+    </div>
+  </div>
 </div>

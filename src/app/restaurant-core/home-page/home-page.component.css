@@ -1,33 +1,75 @@
-/**
-Card style
-*/
-.example-card-header {
+.card-header-title{
     color:#cb202d;
     font-size: 2rem;
     font-weight: 700;
   }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+
+  .card-header-city{
+    color:black;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .card-header-address{
+    color:grey;
+    font-size: 1.6rem;
+    font-weight: 700;
   }
 
   .img-float{
-    float:right
+    float: right;
+    width: 201px;
+    height: 99px;
+    margin-left: 15px;
+    border: white;
+    border-radius: 8px;
   }
 
   .rest-list-container{
-   width: 70%;
+   width: 62%;
    margin: auto;
-
 }
 
-.card-title {
-    font-size: 20px;
-    margin-bottom: .75rem;
-    line-height: 27px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .card-title {
     color: #89959B;
 }
+
+  .card-body-detail{
+    font-size: 13px;
+    line-height: 17px;
+}
+
+  .button-options{
+    font-size: 1.6rem;
+    height: 46px;
+    color: darkslategrey;
+}
+
+  .card{
+    margin:1%
+}
+
+  a.navbar-brand{
+    color: white;
+    font-size: 3.25rem;
+}
+  
+  .custom-title-navbar{
+    background-color:#cb202d;
+}
+  
+  .custom-nav-item>a{
+    font-size: 2rem;
+    color:white
+}
+  
+  .custom-nav-item.active >a{
+    border:white;
+    border-radius: 2px;
+}
+  
+  .empty{
+    margin: 14%;
+    color: darkgrey;
+    font-size: 4rem;
+}
+  

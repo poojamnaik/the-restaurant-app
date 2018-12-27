@@ -1,0 +1,123 @@
+<!-- Button trigger modal -->
+<div>
+  <button type="button" class="btn btn-success button-options" (click)=resetForm() data-toggle="modal" data-target="#createRestaurantModal">
+    Add New Restaurant
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="createRestaurantModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" *ngIf="!dataSaved">
+        <h3 class="modal-title" id="createRestaurantModalLabel">Add New Restaurant</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+
+              <form (ngSubmit)="saveRestaurant()" #registerForm="ngForm" *ngIf="!dataSaved">
+
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="restaurant_year">Url</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.url" name="restaurant_year">
+                </div>
+                <div class="form-group">
+                  <label for="cost_for_two">Cost for Two</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.average_cost_for_two" name="cost_for_two">
+                </div>
+                <div class="form-group">
+                  <label for="price_range">Price Range</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.price_range" name="price_range">
+                </div>
+                <div class="form-group">
+                  <label for="thumb">Thumbnail Image</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.thumb" name="thumb">
+                </div>
+
+                <div class="form-group">
+                  <label for="photos_url">Photos Url</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.photos_url" name="photos_url">
+                </div>
+                <div class="form-group">
+                  <label for="name">Online delivery</label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.has_online_delivery" name="published_year">
+                </div>
+
+                <div class="form-group">
+                  <label for="cuisines">Cuisines </label>
+                  <input type="text" class="form-control" [(ngModel)]="restaurant.cuisines" name="cuisines">
+                </div>
+
+                <div class="panel-group">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Where can we find you ?&nbsp;<i class="fa fa-chevron-down"
+                            aria-hidden="true"></i></a>
+                      </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                      <div class="panel-body">
+
+                        <div class="form-group">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.address" name="address">
+                        </div>
+                        <div class="form-group">
+                          <label for="locality">Locality</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.locality" name="locality">
+                        </div>
+                        <div class="form-group">
+                          <label for="city">City</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.city" name="city">
+                        </div>
+                        <div class="form-group">
+                          <label for="latitude">Latitude</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.latitude" name="latitude">
+                        </div>
+                        <div class="form-group">
+                          <label for="longitude">Longitude</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.longitude" name="longitude">
+                        </div>
+                        <div class="form-group">
+                          <label for="zipcode">Zip Code</label>
+                          <input type="text" class="form-control" [(ngModel)]="location.zipcode" name="zipcode">
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+
+              </form>
+              <div *ngIf="dataSaved" class="savedSuccessfully">
+                Data Saved Successfully&nbsp; <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer" *ngIf="!dataSaved">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!--   <button type="button" class="btn btn-primary">Register</button>-->
+      </div>
+    </div>
+  </div>
+</div>

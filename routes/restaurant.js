@@ -1,45 +1,45 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
 var Restaurant = require('../models/Restaurant.js');
 
-/* GET ALL BOOKS */
+/* GET ALL RESTAURANTS */
 router.get('/', function(req, res, next) {
-    Restaurant.find(function (err, products) {
+    Restaurant.find(function (err, restaurant) {
     if (err) return next(err);
-    res.json(products);
+    res.json(restaurant);
   });
 });
 
-/* GET SINGLE BOOK BY ID */
+/* GET SINGLE RESTAURANT BY ID */
 router.get('/:id', function(req, res, next) {
-    Restaurant.findById(req.params.id, function (err, post) {
+    Restaurant.findById(req.params.id, function (err, restaurant) {
     if (err) return next(err);
-    res.json(post);
+    res.json(restaurant);
   });
 });
 
-/* SAVE BOOK */
+/* SAVE RESTAURANT */
 router.post('/', function(req, res, next) {
-    Restaurant.create(req.body, function (err, post) {
+  console.log('REWUSEST body'+JSON.stringify(req.body));
+    Restaurant.create(req.body, function (err, restaurant) {
     if (err) return next(err);
-    res.json(post);
+    res.json(restaurant);
   });
 });
 
-/* UPDATE BOOK */
+/* UPDATE RESTAURANT */
 router.put('/:id', function(req, res, next) {
-    Restaurant.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    Restaurant.findByIdAndUpdate(req.params.id, req.body, function (err, restaurant) {
     if (err) return next(err);
-    res.json(post);
+    res.json(restaurant);
   });
 });
 
-/* DELETE BOOK */
+/* DELETE RESTAURANT */
 router.delete('/:id', function(req, res, next) {
-    Restaurant.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    Restaurant.findByIdAndRemove(req.params.id, req.body, function (err, restaurant) {
     if (err) return next(err);
-    res.json(post);
+    res.json(restaurant);
   });
 });
 

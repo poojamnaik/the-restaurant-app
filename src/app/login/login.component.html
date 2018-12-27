@@ -4,10 +4,6 @@
     <div class="row">
       <div class="col-md-6 offset-md-3">
 
-        <div class="alert alert-info col">
-          <strong>Normal User</strong> - U: user P: user<br />
-          <strong>Administrator</strong> - U: admin P: admin
-        </div>
         <h2>Login</h2>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -30,6 +26,12 @@
           </div>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>
+        <div>
+          <h3>
+             <app-registration></app-registration>
+
+          </h3>
+        </div>
       </div>
     </div>
   </div>
